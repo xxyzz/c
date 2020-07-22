@@ -1,19 +1,13 @@
 CC = clang
 CFLAGS = -Weverything
+CHAPTER := 1
+EXERCISES := 10
+TARGETS := $(foreach i, $(shell seq 1 $(EXERCISES)),$(CHAPTER)-$i.out)
 
-all: 1-1 1-2 1-3 1-4 1-5
+all: $(TARGETS)
 
-1-1: 1-1.c
-	$(CC) -o 1-1.out 1-1.c $(CFLAGS)
+%.out: %.c
+	$(CC) $^ -o $@ $(CFLAGS)
 
-1-2: 1-2.c
-	$(CC) -o 1-2.out 1-2.c $(CFLAGS)
-
-1-3: 1-3.c
-	$(CC) -o 1-3.out 1-3.c $(CFLAGS)
-
-1-4: 1-4.c
-	$(CC) -o 1-4.out 1-4.c $(CFLAGS)
-
-1-5: 1-5.c
-	$(CC) -o 1-5.out 1-5.c $(CFLAGS)
+clean:
+	rm -f ./*.out
