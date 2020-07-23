@@ -20,11 +20,13 @@ Modify the temperature conversion program to print a heading above the table.
 
 Write a program to print the corresponding Celsius to Fahrenheit table.
 
-### 1.3 The For Statement
+## 1.3 The For Statement
 
 #### Exercise 1-5
 
 Modify the temperature conversion program to print the table in reverse order, that is, from 300 degrees to 0.
+
+## 1.4 Symbolic Constants
 
 ## 1.5 Character Input and Output
 
@@ -73,3 +75,29 @@ Write a program to print a histogram of the lengths of words in its input. It is
 #### Exercise 1-14
 
 Write a program to print a histogram of the frequencies of different characters in its input.
+
+## 1.7 Functions
+
+#### Exercise 1-15
+
+Rewrite the temperature conversion program of Section 1.2 to use a function for conversion.
+
+## 1.8 Arguments—Call by Value
+
+## 1.9 Character Arrays
+
+#### Exercise 1-16
+
+Revise the main routine of the longest-line program so it will correctly print the length of arbitrarily long input lines, and as much as possible of the text.
+
+#### Exercise 1-17
+
+Write a program to print all input lines that are longer than 80 characters.
+
+#### Exercise 1-18
+
+Write a program to remove trailing blanks and tabs from each line of input, and to delete entirely blank lines.
+
+#### Exercise 1-19
+
+Write a function `reverse(s)` that reverses the character string `s`. Use it to write a program that reverses its input a line at a time.
