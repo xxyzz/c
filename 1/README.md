@@ -101,3 +101,13 @@ Write a program to remove trailing blanks and tabs from each line of input, and 
 #### Exercise 1-19
 
 Write a function `reverse(s)` that reverses the character string `s`. Use it to write a program that reverses its input a line at a time.
+
+## 1.10 External Variables and Scope
+
+#### Exercise 1-20
+
+Write a program `detab` that replaces tabs in the input with the proper number of blanks to space to the next tab stop. Assume a fixed set of tab stops, say every *n* columns. Should *n* be a variable or a symbolic parameter?
+
+#### Exercise 1-21
+
+Write a program `entab` that replaces strings of blanks by the minimum number of tabs and blanks to achieve the same spacing. Use the same tab stops as for `detab`. When either a tab or a single blank would suffice to reach a tab stop, which should be given preference?
