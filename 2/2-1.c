@@ -9,6 +9,9 @@ int main() {
 
   // char 8 bits
   // signed: -128 - 127
+  // 10000000: -128
+  // 01111111: 127
+  // https://en.wikipedia.org/wiki/Two's_complement
   // unsigned: 0 - 255
   printf("signed char range from header: %d - %d\n", SCHAR_MIN, SCHAR_MAX);
   printf("signed char range from computation: %d - %d\n",

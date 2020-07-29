@@ -1,0 +1,34 @@
+#include <stdio.h>
+#define LIMIT 10
+
+int my_getline(char s[], int lim);
+
+int main() {
+  int len;
+  char line[LIMIT];
+  printf("%d\n", -1L < 1UL);
+  while ((len = my_getline(line, LIMIT)) > 0)
+    printf("%s", line);
+
+  return 0;
+}
+
+int my_getline(char s[], int lim) {
+  int c = ' ', i;
+
+  for (i = 0; i < lim - 1; ++i) {
+    if ((c = getchar()) != EOF)
+      if (c != '\n')
+        s[i] = (char)c;
+      else
+        break;
+    else
+      break;
+  }
+  if (c == '\n') {
+    s[i] = (char)c;
+    ++i;
+  }
+  s[i] = '\0';
+  return i;
+}
