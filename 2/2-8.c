@@ -14,16 +14,16 @@ int main() {
 int wordlength() {
   int len;
   unsigned i = (unsigned)~0;
-  for (len = 1; (i = i >> 1) > 0; len++)
+  for (len = 1; (i >>= 1) > 0; len++)
     ;
   return len;
 }
 
 unsigned rightrot(unsigned x, int n) {
   int word_len = wordlength();
-  if ((n = n % word_len) > 0) {
+  if ((n %= word_len) > 0) {
     unsigned right_bits = x & (unsigned)~(~0 << n);
-    right_bits = right_bits << (word_len - n);
+    right_bits <<= (word_len - n);
     x = (x >> n) | right_bits;
   }
   return x;
