@@ -8,6 +8,8 @@ Exercises of *The c programming language*.
 
 ### [2: Types, Operators, and Expressions](/2)
 
+### [3:Control Flow](/3)
+
 ## License
 
 This work is licensed under GPL version 3 or later.
