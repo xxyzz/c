@@ -1,7 +1,7 @@
 CC = clang
 CFLAGS = -Weverything
 CHAPTER := 2
-EXERCISES := 7
+EXERCISES := 8
 TARGETS := $(foreach i,$(shell seq 1 $(EXERCISES)),$(CHAPTER)-$i.out)
 
 all: $(TARGETS)
