@@ -1,24 +1,20 @@
 #include <limits.h>
 #include <stdio.h>
 
-/*
- * positive number can't represent the smallest negative number
- * -4: 100, 3: 011
- */
-
-void my_itoa(int n, char s[]);
+void my_itoa(int n, char s[], int min_len);
 void reverse(char s[]);
 
 int main() {
   char s[100];
-  my_itoa(INT_MIN, s);
-  printf("my_itoa(%d, s): %s\n", INT_MIN, s);
+  my_itoa(INT_MIN, s, 20);
+  printf("my_itoa(%d, s, 20): %s\n", INT_MIN, s);
   return 0;
 }
 
 /* itoa:  convert n to characters in s */
-void my_itoa(int n, char s[]) {
+void my_itoa(int n, char s[], int min_len) {
   int i = 0, sign = n;
+
   do { /* generate digits in reverse order */
     int curr = n % 10;
     if (sign < 0)
@@ -27,6 +23,8 @@ void my_itoa(int n, char s[]) {
   } while (n /= 10);           /* delete it */
   if (sign < 0)
     s[i++] = '-';
+  while (i < min_len)
+    s[i++] = ' ';
   s[i] = '\0';
   reverse(s);
 }
