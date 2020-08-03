@@ -1,6 +1,7 @@
 #include <float.h>
 #include <limits.h>
 #include <stdio.h>
+#include <string.h> // memcpy
 // https://en.wikipedia.org/wiki/C_data_types
 
 int main() {
@@ -76,25 +77,55 @@ int main() {
          DBL_MIN_EXP, LDBL_MIN_EXP);
   // Maximum int x such that FLT_RADIX**(x-1) is a representable float, emax.
   // FLT_MAX_EXP: 128, DBL_MAX_EXP: 1024, LDBL_MAX_EXP: 16384
-  printf("FLT_MAX_EXP: %d, DBL_MAX_EXP: %d, LDBL_MAX_EXP: %d\n", FLT_MAX_EXP,
+  printf("FLT_MAX_EXP: %d, DBL_MAX_EXP: %d, LDBL_MAX_EXP: %d\n\n", FLT_MAX_EXP,
          DBL_MAX_EXP, LDBL_MAX_EXP);
 
-  // float
-  // Maximum representable finite floating-point number,
-  // (1 - b**-p) * b**emax
-  // = (1 - 2^-24) * 2^128
-  // = 340282346638528859811704183484516925440.000000
-  printf("float range from header: ±%f\n", FLT_MAX);
+  /*
+   * float 32 bits
+   * Maximum representable finite floating-point number,
+   * (1 - b**-p) * b**emax
+   * = (1 - 2^-24) * 2^128
+   * = 340282346638528859811704183484516925440.000000 (%f)
+   * = 3.40282e+38
+   */
+  printf("float range from header: ±%g\n", FLT_MAX);
+  /*
+   * 0    1111 1110 1111 1111 1111 1111 1111 111
+   * 31   30        22                         0
+   * sign exponent  precision
+   * 2^(2^8 - 2 - 127) * (1 + 2^-1 + 2^-2 + ... + 2^-23)
+   * 2^(254-127) * (1 + 2^-1 + 2^-2 + ... + 2^-23)
+   * = 2^127 * 2 * (1 - 2^-24)
+   */
+  unsigned temp1 = 0x7F7FFFFFU;
+  float max_float = 0;
+  memcpy(&max_float, &temp1, sizeof(temp1));
+  printf("float range from computation: ±%g\n\n", max_float);
 
-  // double
-  // (1 - 2^-53) * 2^1024
-  // 179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000000
-  printf("double range from header: ±%lf\n", DBL_MAX);
+  /*
+   * double 64 bits
+   * (1 - 2^-53) * 2^1024
+   * 179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000000 (%lf)
+   * = 1.79769e+308
+   */
+  printf("double range from header: ±%g\n", DBL_MAX);
+  /*
+   * 0  11111111110 1111111111111111111111111111111111111111111111111111
+   * 63             51                                                 0
+   * 2^(2^11 - 2 - 1023) * (1 + 2^-1 + ... + 2^-52)
+   * = 2^(2046 - 1023) * ...
+   * = 2^1023 * 2 * (1 - 2^-53)
+   */
+  unsigned long temp2 = 0x7FEFFFFFFFFFFFFFUL;
+  double max_double = 0;
+  memcpy(&max_double, &temp2, sizeof(temp2));
+  printf("double range from computation: ±%g\n\n", max_double);
 
-  // long double
-  // (1 - 2^64) * 2^16384
-  // oh boy
-  printf("long double range from header: ±%Lf\n", LDBL_MAX);
+  /*
+   * long double 80 bits
+   * (1 - 2^64) * 2^16384 = 1.18973e+4932
+   */
+  printf("long double range from header: ±%Lg\n", LDBL_MAX);
 
   /*
    * use `gcc/clang -H 2-1.c` to find the header file's path
@@ -103,7 +134,12 @@ int main() {
    * DBL_MIN: it's near 0
    * Minimum normalized positive floating-point number, b**(emin - 1).
    *
+   * RTFM:
+   * https://en.wikipedia.org/wiki/Single-precision_floating-point_format
+   * https://en.wikipedia.org/wiki/Double-precision_floating-point_format
+   * https://en.wikipedia.org/wiki/Extended_precision
    * IEEE 754 doi:10.1109/ieeestd.2019.8766229
+   * What Every Computer Scientist Should Know About Floating-Point Arithmetic
    */
 
   return 0;

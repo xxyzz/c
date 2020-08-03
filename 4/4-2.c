@@ -5,7 +5,7 @@
 double atof(char s[]);
 
 int main(void) {
-  printf("atof(\"123.45e-6\"): %.10f\n", atof("123.45e-6"));
+  printf("atof(\"123.45e-6\"): %g\n", atof("123.45e-6"));
   return 0;
 }
 

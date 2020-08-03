@@ -6,7 +6,6 @@ int my_getline(char s[], int lim);
 int main() {
   int len;
   char line[LIMIT];
-  printf("%d\n", -1L < 1UL);
   while ((len = my_getline(line, LIMIT)) > 0)
     printf("%s", line);
 
