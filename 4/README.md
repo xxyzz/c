@@ -17,3 +17,7 @@ Extend `atof` to handle scientific notation of the form `123.45e−6` where a fl
 #### Exercise 4-3
 
 Given the basic framework, it’s straightforward to extend the calculator. Add the modulus (`%`) operator and provisions for negative numbers.
+
+#### Exercise 4-4
+
+Add commands to print the top element of the stack without popping, to duplicate it, and to swap the top two elements. Add a command to clear the stack.
