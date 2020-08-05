@@ -25,3 +25,7 @@ Add commands to print the top element of the stack without popping, to duplicate
 #### Exercise 4-5
 
 Add access to library functions like `sin`, `exp`, and `pow`. See <`math.h`> in Appendix B, Section 4.
+
+#### Exercise 4-6
+
+Add commands for handling variables. (It’s easy to provide twenty-six variables with single-letter names.) Add a variable for the most recently printed value.
