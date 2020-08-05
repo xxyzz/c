@@ -29,3 +29,7 @@ Add access to library functions like `sin`, `exp`, and `pow`. See <`math.h`> in 
 #### Exercise 4-6
 
 Add commands for handling variables. (It’s easy to provide twenty-six variables with single-letter names.) Add a variable for the most recently printed value.
+
+#### Exercise 4-7
+
+Write a routine `ungets(s)` that will push back an entire string onto the input. Should `ungets` know about `buf` and `bufp`, or should it just use `ungetch`?
