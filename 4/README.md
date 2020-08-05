@@ -21,3 +21,7 @@ Given the basic framework, it’s straightforward to extend the calculator. Add 
 #### Exercise 4-4
 
 Add commands to print the top element of the stack without popping, to duplicate it, and to swap the top two elements. Add a command to clear the stack.
+
+#### Exercise 4-5
+
+Add access to library functions like `sin`, `exp`, and `pow`. See <`math.h`> in Appendix B, Section 4.
