@@ -5,7 +5,6 @@ static char buf = '\0';  /* buffer for ungetch */
 int getch(void);
 void ungetch(int);
 
-/* reverse Polish calculator */
 int main() {
   ungetch('a');
   printf("buf: %c\n", buf);

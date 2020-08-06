@@ -7,6 +7,12 @@ int main() {
   // 3855: 1111 0000 1111
   // index      7654 3210
   printf("invert(4095, 7, 4): %d\n", invert(4095, 7, 4));
+
+  printf("-1L < 1U: %d\n", -1L < 1U);
+  // 1, 1U(unsigned int) -> 1(signed long)
+
+  printf("-1L < 1UL: %d\n", -1L < 1UL);
+  // 0, -1L(signed long) -> large number(unsigned long)
   return 0;
 }
 
