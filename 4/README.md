@@ -55,3 +55,15 @@ An alternate organization uses `getline` to read an entire input line; this make
 #### Exercise 4-11
 
 Modify `getop` so that it doesn’t need to use `ungetch`. Hint: use an internal `static` variable.
+
+## 4.7 Register Variables
+
+## 4.8 Block Structure
+
+## 4.9 Initialization
+
+## 4.10 Recursion
+
+#### Exercise 4-12
+
+Adapt the ideas of `printd` to write a recursive version of `itoa`; that is, convert an integer into a string by calling a recursive routine.
