@@ -33,3 +33,7 @@ Add commands for handling variables. (It’s easy to provide twenty-six variable
 #### Exercise 4-7
 
 Write a routine `ungets(s)` that will push back an entire string onto the input. Should `ungets` know about `buf` and `bufp`, or should it just use `ungetch`?
+
+#### Exercise 4-8
+
+Suppose that there will never be more than one character of pushback. Modify `getch` and `ungetch` accordingly.
