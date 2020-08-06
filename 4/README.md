@@ -45,3 +45,13 @@ Our `getch` and `ungetch` do not handle a pushed-back `EOF` correctly. Decide wh
 #### Exercise 4-10
 
 An alternate organization uses `getline` to read an entire input line; this makes `getch` and `ungetch` unnecessary. Revise the calculator to use this approach.
+
+## 4.4 Scope Rules
+
+## 4.5 Header Files
+
+## 4.6 Static Variables
+
+#### Exercise 4-11
+
+Modify `getop` so that it doesn’t need to use `ungetch`. Hint: use an internal `static` variable.
