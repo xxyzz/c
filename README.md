@@ -12,6 +12,8 @@ Exercises of *The c programming language*.
 
 ### [4: Functions and Program Structure](/4)
 
+### [5: Pointers and Arrays](/5)
+
 ## License
 
 This work is licensed under GPL version 3 or later.
