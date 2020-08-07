@@ -71,3 +71,13 @@ Adapt the ideas of `printd` to write a recursive version of `itoa`; that is, con
 #### Exercise 4-13
 
 Write a recursive version of the function `reverse(s)`, which reverses the string `s` in place.
+
+## 4.11 The C Preprocessor
+
+### 4.11.1 File Inclusion
+
+### 4.11.2 Macro Substitution
+
+#### Exercise 4-14
+
+Define a macro `swap(t,x,y)` that interchanges two arguments of type `t`. (Block structure will help.)

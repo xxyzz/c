@@ -8,7 +8,7 @@ Exercises of *The c programming language*.
 
 ### [2: Types, Operators, and Expressions](/2)
 
-### [3:Control Flow](/3)
+### [3: Control Flow](/3)
 
 ### [4: Functions and Program Structure](/4)
 
