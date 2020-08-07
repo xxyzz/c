@@ -21,3 +21,7 @@ Write `getfloat`, the floating-point analog of `getint`. What type does `getfloa
 #### Exercise 5-3
 
 Write a pointer version of the function `strcat` that we showed in Chapter 2: `strcat(s,t)` copies the string `t` to the end of `s`.
+
+#### Exercise 5-4
+
+Write the function `strend(s,t)`, which returns 1 if the string `t` occurs at the end of the string `s`, and zero otherwise.
