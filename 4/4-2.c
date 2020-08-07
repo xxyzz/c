@@ -5,14 +5,16 @@
 double atof(char s[]);
 
 int main(void) {
-  printf("atof(\"123.45e-6\"): %g\n", atof("123.45e-6"));
+  printf("atof(\"123.45e-67\"): %g\n", atof("123.45e-67"));
+  printf("atof(\"123.45e11\"): %g\n", atof("123.45e11"));
+  printf("atof(\"123.45e+67\"): %g\n", atof("123.45e+67"));
   return 0;
 }
 
 /* atof:  convert string s to double */
 double atof(char s[]) {
   double val, power;
-  int i, sign, exp_sign = 0, exp = 0;
+  int i, sign, exp_sign = 1, exp = 0;
 
   for (i = 0; isspace(s[i]); i++) /* skip white space */
     ;
@@ -30,12 +32,13 @@ double atof(char s[]) {
 
   if (tolower(s[i]) == 'e')
     i++;
-  if (s[i] == '-') {
+  if (s[i] == '-' || s[i] == '+') {
     i++;
-    exp_sign = -1;
+    if (s[i - 1] == '-')
+      exp_sign = -1;
   }
-  if (isdigit(s[i]))
-    exp = s[i] - '0';
+  for (; isdigit(s[i]); i++)
+    exp = exp * 10 + (s[i] - '0');
 
   double result = sign * val / power;
   if (exp) {
