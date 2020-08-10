@@ -45,3 +45,11 @@ Rewrite `readlines` to store lines in an array supplied by `main`, rather than c
 #### Exercise 5-8
 
 There is no error checking in `day_of_year` or `month_day`. Remedy this defect.
+
+## 5.8 Initialization of Pointer Arrays
+
+## 5.9 Pointers vs. Multi-dimensional Arrays
+
+#### Exercise 5-9
+
+Rewrite the routines `day_of_year` and `month_day` with pointers instead of indexing.

@@ -22,7 +22,7 @@ int main() {
 
 /* day_of_year: set day of year from month & day */
 int day_of_year(int year, int month, int day) {
-  int i, leap;
+  int leap;
 
   if (year < 1)
     return -1;
@@ -30,22 +30,26 @@ int day_of_year(int year, int month, int day) {
     return -1;
 
   leap = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
-  if (day < 1 || day > daytab[leap][month])
+  char *tabp = daytab[leap] + 1;
+  if (day < 1 || day > *(tabp + month))
     return -1;
-  for (i = 1; i < month; i++)
-    day += daytab[leap][i];
+  while (--month)
+    day += *tabp++;
   return day;
 }
 
 /* month_day: set month, day from day of year */
 void month_day(int year, int yearday, int *pmonth, int *pday) {
-  int i, leap = 0;
+  int i = 1, leap = 0;
 
   if (year > 0 && yearday > 0) {
     leap = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+    char *tabp = daytab[leap] + 1;
     if ((!leap && yearday <= 365) || (leap && yearday <= 366))
-      for (i = 1; yearday > daytab[leap][i]; i++)
-        yearday -= daytab[leap][i];
+      while (yearday > *tabp) {
+        yearday -= *tabp++;
+        i++;
+      }
     else {
       i = -1;
       yearday = -1;

@@ -1,6 +1,6 @@
 # c
 
-Exercises of *The c programming language*.
+Exercises of [*The C Programming Language*](https://s3-us-west-2.amazonaws.com/belllabs-microsite-dritchie/cbook/index.html).
 
 ## Chapters
 
