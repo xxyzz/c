@@ -39,3 +39,9 @@ Rewrite appropriate programs from earlier chapters and exercises with pointers i
 #### Exercise 5-7
 
 Rewrite `readlines` to store lines in an array supplied by `main`, rather than calling `alloc` to maintain storage. How much faster is the program?
+
+## 5.7 Multi-dimensional Arrays
+
+#### Exercise 5-8
+
+There is no error checking in `day_of_year` or `month_day`. Remedy this defect.
