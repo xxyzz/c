@@ -10,7 +10,7 @@ int main(void) {
   return 0;
 }
 
-/* strindex:  return the rightmost index of t in s, −1 if none */
+/* strindex: return the rightmost index of t in s, −1 if none */
 int strindex(char s[], char t[]) {
   int i, j, k = 0, index = -1;
 

@@ -11,7 +11,7 @@ int main() {
   return 0;
 }
 
-/* itoa:  convert n to characters in s */
+/* itoa: convert n to characters in s */
 void my_itoa(int n, char s[], int min_len) {
   int i = 0, sign = n;
 

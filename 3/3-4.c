@@ -16,7 +16,7 @@ int main() {
   return 0;
 }
 
-/* itoa:  convert n to characters in s */
+/* itoa: convert n to characters in s */
 void my_itoa(int n, char s[]) {
   int i = 0, sign = n;
   do { /* generate digits in reverse order */

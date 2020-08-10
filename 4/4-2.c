@@ -11,7 +11,7 @@ int main(void) {
   return 0;
 }
 
-/* atof:  convert string s to double */
+/* atof: convert string s to double */
 double atof(char s[]) {
   double val, power;
   int i, sign, exp_sign = 1, exp = 0;

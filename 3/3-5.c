@@ -21,9 +21,9 @@ void my_itob(int n, char s[], int b) {
     int curr = n % b;
     if (curr < 0)
       curr = -curr;
-    s[i++] =
-      (curr < 10) ? (char)curr + '0' : (char)curr - 10 + 'A'; /* right most bit */
-  } while (n /= b);                                /* delete it */
+    s[i++] = (curr < 10) ? (char)curr + '0'
+                         : (char)curr - 10 + 'A'; /* right most bit */
+  } while (n /= b);                               /* delete it */
   if (sign < 0)
     s[i++] = '-';
   s[i] = '\0';
