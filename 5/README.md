@@ -53,3 +53,15 @@ There is no error checking in `day_of_year` or `month_day`. Remedy this defect.
 #### Exercise 5-9
 
 Rewrite the routines `day_of_year` and `month_day` with pointers instead of indexing.
+
+## 5.10 Command-line Arguments
+
+#### Exercise 5-10
+
+Write the program `expr`, which evaluates a reverse Polish expression from the command line, where each operator or operand is a separate argument. For example,
+
+```
+expr  2  3  4  +  *
+```
+
+evaluates 2 × (3+4).
