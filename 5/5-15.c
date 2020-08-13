@@ -86,7 +86,7 @@ void tolowers(char *s) {
     s[i] = (char)tolower(s[i]);
 }
 
-/* numcmp:  compare s1 and s2 numerically */
+/* numcmp: compare s1 and s2 numerically */
 int numcmp(const char *s1, const char *s2) {
   double v1, v2;
 
