@@ -8,4 +8,4 @@ all: $(TARGETS)
 	$(CC) $^ -o $@ $(CFLAGS)
 
 clean:
-	rm -f ./*.out
+	rm -rf ./*.out ./*.dSYM
