@@ -12,8 +12,8 @@ void dirdcl(void);
 int getch(void);
 void ungetch(int c);
 void rmblanks(int *c);
+int gettoken(void);
 
-static int gettoken(void);
 static int tokentype;           /* type of last token */
 static char token[MAXTOKEN];    /* last token string */
 static char name[MAXTOKEN];     /* identifier name */
@@ -104,7 +104,7 @@ int gettoken(void) {
     }
     *p = '\0';
     return tokentype = BRACKETS;
-  } else if (isalgspha(c)) {
+  } else if (isalpha(c)) {
     for (*p++ = (char)c; isalnum(c = getch());)
       *p++ = (char)c;
     *p = '\0';

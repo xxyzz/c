@@ -113,3 +113,7 @@ Add a field-handling capability, so sorting may be done on fields within lines, 
 #### Exercise 5-18
 
 Make `dcl` recover from input errors.
+
+#### Exercise 5-19
+
+Modify `undcl` so that it does not add redundant parentheses to declarations.

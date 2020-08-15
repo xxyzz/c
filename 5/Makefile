@@ -1,4 +1,4 @@
 CHAPTER := 5
-EXERCISES := 18
+EXERCISES := 19
 
 include ../common.mk
