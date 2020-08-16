@@ -1,4 +1,4 @@
-#include <ctype.h>  // isalnum, isalpha
+#include <ctype.h>  // isalnum, isalpha, isblank
 #include <stdio.h>  // getchar, sprintf
 #include <string.h> // stripy, strcat
 
@@ -90,7 +90,7 @@ int gettoken(void) {
 }
 
 void rmblanks(int *c) {
-  while ((*c = getch()) == ' ' || *c == '\t')
+  while (isblank(*c = getch()))
     ;
 }
 

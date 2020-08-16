@@ -5,7 +5,7 @@
 #define MAXTOKEN 100
 #define BUFSIZE 100
 
-enum { NAME, PARENS, BRACKETS };
+enum { NAME, PARENS, BRACKETS, KEYWORDS };
 
 void dcl(void);
 void dirdcl(void);
@@ -13,6 +13,7 @@ int getch(void);
 void ungetch(int c);
 void rmblanks(int *c);
 int gettoken(void);
+int iskeyword(const char *s);
 
 static int tokentype;           /* type of last token */
 static char token[MAXTOKEN];    /* last token string */
@@ -21,6 +22,9 @@ static char datatype[MAXTOKEN]; /* data type = char, int, etc. */
 static char out[1000];          /* output string */
 static char buf[BUFSIZE];       /* buffer for ungetch */
 static int bufp = 0;            /* next free position in buf */
+static char *keywords[] = {"const",  "volatile", "static",   "void",  "char",
+                           "short",  "int",      "long",     "float", "double",
+                           "signed", "unsigned", "register", "extern"};
 
 /* convert declaration to words
  *
@@ -105,10 +109,27 @@ int gettoken(void) {
     *p = '\0';
     return tokentype = BRACKETS;
   } else if (isalpha(c)) {
-    for (*p++ = (char)c; isalnum(c = getch());)
-      *p++ = (char)c;
-    *p = '\0';
-    ungetch(c);
+    char s[MAXTOKEN];
+    token[0] = '\0';
+    while (1) {
+      int i = 0;
+      for (s[i++] = (char)c; isalnum(c = getch()) && i < MAXTOKEN - 2;)
+        s[i++] = (char)c;
+      s[i] = '\0';
+      if (!iskeyword(s)) {
+        ungetch(c);
+        if (!token[0])
+          strcat(token, s); // function or variable name
+        else
+          while (i)
+            ungetch(s[--i]);
+        break;
+      }
+      s[i++] = ' ';
+      s[i] = '\0';
+      strcat(token, s); // append keyword
+      rmblanks(&c);
+    }
     return tokentype = NAME;
   } else
     return tokentype = c;
@@ -117,6 +138,14 @@ int gettoken(void) {
 void rmblanks(int *c) {
   while (isblank(*c = getch()))
     ;
+}
+
+int iskeyword(const char *s) {
+  for (size_t i = 0; i < sizeof(keywords) / sizeof(char *); i++) {
+    if (strcmp(keywords[i], s) == 0)
+      return 1;
+  }
+  return 0;
 }
 
 /* get a (possibly pushed back) character */
