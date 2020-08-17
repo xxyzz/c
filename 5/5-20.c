@@ -5,7 +5,7 @@
 #define MAXTOKEN 100
 #define BUFSIZE 100
 
-enum { NAME, PARENS, BRACKETS, KEYWORDS };
+enum { NAME, PARENS, BRACKETS };
 
 void dcl(void);
 void dirdcl(void);
@@ -28,12 +28,14 @@ static char *keywords[] = {"const",  "volatile", "static",   "void",  "char",
 
 /* convert declaration to words
  *
- * char (*(*x())[)(), char ( * ( * x ( ) ) [ ) ( )
- * x:  function returning pointer to array[] of
- * pointer to function returning char
+ * unsigned char (*f)(int, char *, const char *)
+ * f:  pointer to  function with parameter of int , pointer to char ,
+ * pointer to const char  returning unsigned char
  *
- * int x(, int x (  ), int x (
- * x:  function returning int
+ * void qsort(void *[], int, int, int (*)(void *, void *))
+ * qsort:  function with parameter of array[] of pointer to void ,int ,int ,
+ * pointer to  function with parameter of  pointer to void , pointer to void
+ * returning int  returning  void
  */
 int main() {
   while (gettoken() != EOF) { /* 1st token on line */
@@ -58,7 +60,7 @@ void dcl(void) {
     ns++;
   dirdcl();
   while (ns-- > 0)
-    strcat(out, " pointer to");
+    strcat(out, " pointer to ");
 }
 
 /* dirdcl: parse a direct declarator */
@@ -71,15 +73,34 @@ void dirdcl(void) {
       printf("error: missing )\n");
   } else if (tokentype == NAME) /* variable name */
     strcpy(name, token);
-  else
-    printf("error: expected name or (dcl)\n");
-  while ((type = gettoken()) == PARENS || type == BRACKETS)
+  else if (tokentype == ',' || tokentype == ')')
+    return;
+  else if (tokentype == BRACKETS) {
+    strcat(out, "array");
+    strcat(out, token);
+    strcat(out, " of");
+  }
+
+  while ((type = gettoken()) == PARENS || type == BRACKETS || type == '(')
     if (type == PARENS)
-      strcat(out, " function returning");
-    else {
-      strcat(out, " array");
+      strcat(out, "function returning");
+    else if (type == BRACKETS) {
+      strcat(out, "array");
       strcat(out, token);
       strcat(out, " of");
+    } else if (type == '(') { /* (dcl, dcl)  */
+      tokentype = '\0';
+      char paratype[MAXTOKEN];
+      strcat(out, " function with parameter of ");
+      do {
+        gettoken();
+        strcpy(paratype, token);
+        dcl();
+        strcat(out, paratype);
+        if (tokentype == ',')
+          strcat(out, ",");
+      } while (tokentype == ',');
+      strcat(out, " returning ");
     }
 }
 
@@ -128,7 +149,12 @@ int gettoken(void) {
       s[i++] = ' ';
       s[i] = '\0';
       strcat(token, s); // append keyword
+      ungetch(c);
       rmblanks(&c);
+      if (!isalpha(c)) {
+        ungetch(c);
+        break;
+      }
     }
     return tokentype = NAME;
   } else
