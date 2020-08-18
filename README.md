@@ -14,6 +14,8 @@ Exercises of [*The C Programming Language*](https://s3-us-west-2.amazonaws.com/b
 
 ### [5: Pointers and Arrays](/5)
 
+### [6: Structures](/6)
+
 ## License
 
 This work is licensed under GPL version 3 or later.

@@ -1,7 +1,8 @@
 #include <stdio.h>
 
 int main() {
-  int c, inside_single = 0, inside_multi = 0, single_quote = 0, double_quote= 0, previous = ' ';
+  int c, inside_single = 0, inside_multi = 0, single_quote = 0,
+         double_quote = 0, previous = ' ';
   while ((c = getchar()) != EOF) {
     if (inside_single) { // inside single line comment
       if (c == '\n')
