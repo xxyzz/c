@@ -22,6 +22,8 @@ int main(int argc, char *argv[]) {
    * \"LIAR!\"
    */
 
+  char poo = 'h';
+
   // YOU KNOW GODDAMN WELL WHAT HAPPENED TO YOUR KID, SO STOP ACTING LIKE VICTIMS
   // AND CONFESS, YOU MURDERING MURDERERS! LIAR! CONFESS!!
   return 0; // LIAR!
