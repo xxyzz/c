@@ -2,20 +2,32 @@
 // https://en.wikipedia.org/wiki/Bracket
 
 int main() {
-  int c, previous = '\0', parentheses = 0, brackets = 0, braces = 0,
-    single_quotes = 0, double_quotes = 0, single_comments = 0,
-    multi_comments = 0;
+  int c, previous = '\0', pre_previous = '\0', parentheses = 0, brackets = 0,
+         braces = 0, single_quotes = 0, double_quotes = 0, single_comments = 0,
+         multi_comments = 0, possible_comment = 0, after_quote = 0;
 
   while ((c = getchar()) != EOF) {
-    if (single_comments) {
+    if (possible_comment) {
+      if (c == '/')
+        ++single_comments;
+      else if (c == '*')
+        ++multi_comments;
+      --possible_comment;
+    } else if (single_comments) {
       if (c == '\n')
         --single_comments;
     } else if (multi_comments) {
       if (previous == '*' && c == '/')
         --multi_comments;
-    } else if (single_quotes) {
-      if (previous != '\\' && c == '\'')
+    } else if (single_quotes) { // 'x', '\t', '\\', '\''
+      ++after_quote;
+      if (c == '\'' && previous != '\\' && after_quote == 2) {
         --single_quotes;
+        after_quote = 0;
+      } else if (c == '\'' && pre_previous == '\\' && after_quote == 3) {
+        --single_quotes;
+        after_quote = 0;
+      }
     } else if (double_quotes) {
       if (previous != '\\' && c == '"')
         --double_quotes;
@@ -36,16 +48,10 @@ int main() {
         ++double_quotes;
       else if (c == '\'')
         ++single_quotes;
-      else if (c == '/') {
-        int next = getchar();
-        if (next == '/')
-          ++single_comments;
-        else if (next == '*')
-          ++multi_comments;
-        else if (next == EOF)
-          break;
-      }
+      else if (c == '/')
+        ++possible_comment;
     }
+    pre_previous = previous;
     previous = c;
   }
 

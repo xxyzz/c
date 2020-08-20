@@ -59,11 +59,16 @@ int getword(char *word, int lim) {
         break;
       previous = c;
     }
-  } else if (c == '\'') { // char
+  } else if (c == '\'') { // char: 'x', '\t'
+    int after_quote = 0, pre = '\0', prepre = '\0';
     while ((c = getch())) {
-      if (previous != '\\' && c == '\'')
+      ++after_quote;
+      if (c == '\'' && pre != '\\' && after_quote == 2)
         break;
-      previous = c;
+      else if (c == '\'' && prepre == '\\' && after_quote == 3)
+        break;
+      prepre = pre;
+      pre = c;
     }
   } else {
     *w = '\0';
