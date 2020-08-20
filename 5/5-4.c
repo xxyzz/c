@@ -15,9 +15,9 @@ int main() {
 
 int strend(char *s, char *t) {
   char *t_cp = t;
-  while(*s)
+  while (*s)
     s++;
-  while(*t_cp)
+  while (*t_cp)
     t_cp++;
   while (*s == *t_cp) {
     if (t_cp == t)
