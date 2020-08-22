@@ -25,3 +25,9 @@ Write a cross-referencer that prints a list of all words in a document, and, for
 #### Exercise 6-4
 
 Write a program that prints the distinct words in its input sorted into decreasing order of frequency of occurrence. Precede each word by its count.
+
+## 6.6 Table Lookup
+
+#### Exercise 6-5
+
+Write a function `undef` that will remove a name and definition from the table maintained by `lookup` and `install`.
