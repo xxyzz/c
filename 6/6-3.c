@@ -26,12 +26,12 @@ struct tnode *addtree(struct tnode *, const char *, long);
 void treeprint(struct tnode *);
 struct tnode *talloc(void);
 int searchtree(struct tnode *, const char *);
-int isword(char *s);
+int isword(char *);
 
 /* print each word with line numbers */
 int main() {
   struct tnode *root = NULL, *noise = NULL;
-  char *line = NULL, *token, *tofree;
+  char *line = NULL, *token, *tofree = NULL;
   size_t len = 0;
   long lines_num = 1;
   ssize_t nread;
@@ -47,7 +47,7 @@ int main() {
     lines_num++;
   }
 
-  free(line);
+  free(tofree);
   treeprint(root);
   return 0;
 }

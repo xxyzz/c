@@ -21,3 +21,7 @@ Write a program that reads a C program and prints in alphabetical order each gro
 #### Exercise 6-3
 
 Write a cross-referencer that prints a list of all words in a document, and, for each word, a list of the line numbers on which it occurs. Remove noise words like “the,” “and,” and so on.
+
+#### Exercise 6-4
+
+Write a program that prints the distinct words in its input sorted into decreasing order of frequency of occurrence. Precede each word by its count.
