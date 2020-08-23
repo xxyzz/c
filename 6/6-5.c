@@ -15,6 +15,7 @@ unsigned hash(char *);
 struct nlist *lookup(char *);
 struct nlist *install(char *, char *);
 void undef(char *);
+void freetable(void);
 
 int main() {
   struct nlist *np;
@@ -28,6 +29,7 @@ int main() {
   undef("password");
   np = lookup("password");
   printf("lookup \"password\": %s\n", np ? np->defn : "not found");
+  freetable();
   return 0;
 }
 
@@ -39,6 +41,20 @@ void undef(char *s) {
     free(np->defn);
     free(np->name);
     free(np);
+  }
+}
+
+void freetable() {
+  struct nlist *np;
+  for (int i = 0; i < HASHSIZE; i++) {
+    np = hashtab[i];
+    while (np != NULL) {
+      struct nlist *tmp = np->next;
+      free(np->defn);
+      free(np->name);
+      free(np);
+      np = tmp;
+    }
   }
 }
 
