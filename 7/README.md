@@ -11,3 +11,9 @@ Write a program that converts upper case to lower or lower case to upper, depend
 #### Exercise 7-2
 
 Write a program that will print arbitrary input in a sensible way. As a minimum, it should print non-graphic characters in octal or hexadecimal according to local custom, and break long text lines.
+
+## 7.3 Variable-length Argument Lists
+
+#### Exercise 7-3
+
+Revise `minprintf` to handle more of the other facilities of `printf`.
