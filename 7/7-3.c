@@ -9,6 +9,7 @@ void minprintf(char *, ...);
 
 int main() {
   minprintf("%d\n", 42);
+  minprintf("%d %d\n", 42, 24);
   minprintf("%5g\n", 0.0000000000042);
   minprintf(":%-10.3d:\n", 42);
   minprintf("%s\n", "If you make money from war, you're scum. If you can't "

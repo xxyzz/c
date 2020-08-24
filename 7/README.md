@@ -17,3 +17,9 @@ Write a program that will print arbitrary input in a sensible way. As a minimum,
 #### Exercise 7-3
 
 Revise `minprintf` to handle more of the other facilities of `printf`.
+
+## 7.4 Formatted Input—Scanf
+
+#### Exercise 7-4
+
+Write a private version of `scanf` analogous to `minprintf` from the previous section.
