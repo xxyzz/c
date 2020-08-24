@@ -24,6 +24,8 @@ Write a cross-referencer that prints a list of all words in a document, and, for
 
 #### Exercise 6-4
 
+https://en.wikipedia.org/wiki/Data_structure_alignment
+
 Write a program that prints the distinct words in its input sorted into decreasing order of frequency of occurrence. Precede each word by its count.
 
 ## 6.6 Table Lookup
@@ -35,3 +37,15 @@ Write a function `undef` that will remove a name and definition from the table m
 #### Exercise 6-6
 
 Implement a simple version of the `#define` processor (i.e., no arguments) suitable for use with C programs, based on the routines of this section. You may also find `getch` and `ungetch` helpful.
+
+## 6.7 Typedef
+
+```c
+typedef int (*PFI)(char *, char *);
+// PFI: pointer to function (of two char * arguments) returning int
+PFI strcmp, numcmp;
+```
+
+## 6.8 Unions
+
+## 6.9 Bit-fields

@@ -22,6 +22,12 @@ Write a loop equivalent to the `for` loop above without using `&&` or `||`.
 
 ## 2.7 Type Conversions
 
+```c
+// see 2-7.c
+printf("%d\n", -1L < 1U);
+printf("%d\n", -1L > 1UL);
+```
+
 #### Exercise 2-3
 
 Write the function `htoi(s)`, which converts a string of hexadecimal digits (including an optional `0x` or `0X`) into its equivalent integer value. The allowable digits are `0` through `9`, `a` through `f`, and `A` through `F`.

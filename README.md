@@ -16,6 +16,8 @@ Exercises of [*The C Programming Language*](https://s3-us-west-2.amazonaws.com/b
 
 ### [6: Structures](/6)
 
+### [7: Input and Output](/7)
+
 ## License
 
 This work is licensed under GPL version 3 or later.
