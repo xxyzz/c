@@ -23,3 +23,7 @@ Revise `minprintf` to handle more of the other facilities of `printf`.
 #### Exercise 7-4
 
 Write a private version of `scanf` analogous to `minprintf` from the previous section.
+
+#### Exercise 7-5
+
+Rewrite the postfix calculator of Chapter 4 to use `scanf` and/or `sscanf` to do the input and number conversion.
