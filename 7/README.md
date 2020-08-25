@@ -27,3 +27,13 @@ Write a private version of `scanf` analogous to `minprintf` from the previous se
 #### Exercise 7-5
 
 Rewrite the postfix calculator of Chapter 4 to use `scanf` and/or `sscanf` to do the input and number conversion.
+
+## 7.5 File Access
+
+## 7.6 Error Handling—Stderr and Exit
+
+## 7.7 Line Input and Output
+
+#### Exercise 7-6
+
+Write a program to compare two files, printing the first line where they differ.
