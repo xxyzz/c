@@ -41,3 +41,7 @@ Write a program to compare two files, printing the first line where they differ.
 #### Exercise 7-7
 
 Modify the pattern finding program of Chapter 5 to take its input from a set of named files or, if no files are named as arguments, from the standard input. Should the file name be printed when a matching line is found?
+
+#### Exercise 7-8
+
+Write a program to print a set of files, starting each new one on a new page, with a title and a running page count for each file.

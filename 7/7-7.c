@@ -61,8 +61,10 @@ int main(int argc, char *argv[]) {
     search_pattern(stdin, pattern, NULL, flags);
 
   free(pattern);
-  for (size_t i = 0; i < filenum; i++)
+  for (size_t i = 0; i < filenum; i++) {
     free(fnames[i]);
+    fclose(files[i]);
+  }
   return 0;
 }
 
