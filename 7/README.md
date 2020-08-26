@@ -45,3 +45,23 @@ Modify the pattern finding program of Chapter 5 to take its input from a set of 
 #### Exercise 7-8
 
 Write a program to print a set of files, starting each new one on a new page, with a title and a running page count for each file.
+
+## 7.8 Miscellaneous Functions
+
+### 7.8.1 String Operations
+
+### 7.8.2 Character Class Testing and Conversion
+
+### 7.8.3 Ungetc
+
+### 7.8.4 Command Execution
+
+### 7.8.5 Storage Management
+
+### 7.8.6 Mathematical Functions
+
+### 7.8.7 Random Number Generation
+
+#### Exercise 7-9
+
+Functions like `isupper` can be implemented to save space or to save time. Explore both possibilities.
