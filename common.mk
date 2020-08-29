@@ -1,6 +1,11 @@
 CC = clang
-CFLAGS = -Weverything
-TARGETS = $(foreach i,$(shell seq $(EXERCISES)),$(CHAPTER)-$i.out)
+CFLAGS = -Weverything -D $(shell uname -s)
+COMMON_TARGETS = $(foreach i,$(shell seq $(EXERCISES)),$(CHAPTER)-$i.out)
+ifndef TARGETS
+	TARGETS = $(COMMON_TARGETS)
+else
+	TARGETS += $(COMMON_TARGETS)
+endif
 
 all: $(TARGETS)
 
