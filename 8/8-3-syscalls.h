@@ -41,3 +41,4 @@ int _my_flushbuf(int, MYFILE *);
 
 int my_fflush(MYFILE *);
 int my_fclose(MYFILE *);
+int my_fseek(MYFILE *, long, int);
