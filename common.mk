@@ -1,5 +1,5 @@
 CC = clang
-CFLAGS = -Weverything -D $(shell uname -s)
+CFLAGS = -Wall -Wextra -D $(shell uname -s)
 COMMON_TARGETS = $(foreach i,$(shell seq $(EXERCISES)),$(CHAPTER)-$i.out)
 ifndef TARGETS
 	TARGETS = $(COMMON_TARGETS)
