@@ -1,7 +1,7 @@
 CC = clang
 CFLAGS = -Wall -Wextra -D $(shell uname -s)
 CHAPTER := 8
-EXERCISES := 5
+EXERCISES := 6
 TARGETS := $(foreach i,$(shell seq $(EXERCISES)),$(CHAPTER)-$i.out)
 TARGETS += 8-1-clib.out 8-2-fields.out
 
@@ -17,6 +17,9 @@ all: $(TARGETS)
 
 8-5.out: 8-5.c dirent.c dirent.h fsize.c fsize.h
 	$(CC) 8-5.c dirent.c fsize.c -o $@ $(CFLAGS)
+
+8-6.out: 8-6.c malloc.c malloc.h
+	$(CC) 8-6.c malloc.c -o $@ $(CFLAGS)
 
 %.out: %.c
 	$(CC) $< -o $@ $(CFLAGS)

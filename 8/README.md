@@ -37,3 +37,9 @@ is identical to `lseek` except that `fp` is a file pointer instead of a file des
 #### Exercise 8-5
 
 Modify the `fsize` program to print the other information contained in the inode entry.
+
+## 8.7 Example—A Storage Allocator
+
+#### Exercise 8-6
+
+The standard library function `calloc(n,size)` returns a pointer to `n` objects of size `size`, with the storage initialized to zero. Write `calloc`, by calling `malloc` or by modifying it.
