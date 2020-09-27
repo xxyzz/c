@@ -43,3 +43,7 @@ Modify the `fsize` program to print the other information contained in the inode
 #### Exercise 8-6
 
 The standard library function `calloc(n,size)` returns a pointer to `n` objects of size `size`, with the storage initialized to zero. Write `calloc`, by calling `malloc` or by modifying it.
+
+#### Exercise 8-7
+
+`malloc` accepts a size request without checking its plausibility; `free` believes that the block it is asked to free contains a valid size field. Improve these routines so they take more pains with error checking.
