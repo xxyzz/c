@@ -47,3 +47,7 @@ The standard library function `calloc(n,size)` returns a pointer to `n` objects 
 #### Exercise 8-7
 
 `malloc` accepts a size request without checking its plausibility; `free` believes that the block it is asked to free contains a valid size field. Improve these routines so they take more pains with error checking.
+
+#### Exercise 8-8
+
+Write a routine `bfree(p,n)` that will free an arbitrary block `p` of `n` characters into the free list maintained by `malloc` and `free`. By using `bfree`, a user can add a static or external array to the free list at any time.

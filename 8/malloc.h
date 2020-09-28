@@ -17,4 +17,5 @@ typedef union header Header;
 void *my_malloc(unsigned);
 void *my_calloc(unsigned, unsigned);
 void my_free(void *);
+void bfree(void *, unsigned);
 #endif

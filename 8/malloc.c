@@ -74,6 +74,13 @@ void my_free(void *ap) {
     return;
   }
 
+  if (freep == NULL) {
+    freep = bp;
+    freep->s.ptr = freep;
+    base = *freep;
+    return;
+  }
+
   for (p = freep; !(bp > p && bp < p->s.ptr); p = p->s.ptr)
     if (p >= p->s.ptr && (bp > p || bp < p->s.ptr))
       break; /* freed block at start or end of arena */
@@ -99,4 +106,17 @@ void *my_calloc(unsigned n, unsigned size) {
   if (p == NULL)
     return NULL;
   return memset(p, 0, n * size);
+}
+
+/* free an arbitrary block p of n characters */
+void bfree(void *p, unsigned n) {
+  if (p == NULL)
+    return;
+  if (n < sizeof(Header) || n > UINT_MAX - sizeof(Header) + 1)
+    return;
+
+  Header *hp;
+  hp = p;
+  hp->s.size = n / sizeof(Header);
+  my_free(hp + 1);
 }
