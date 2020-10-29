@@ -123,7 +123,7 @@ int main() {
 
   /*
    * long double 80 bits
-   * (1 - 2^64) * 2^16384 = 1.18973e+4932
+   * (1 - 2^-64) * 2^16384 = 1.18973e+4932
    */
   printf("long double range from header: ±%Lg\n", LDBL_MAX);
 
