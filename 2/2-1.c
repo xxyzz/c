@@ -1,5 +1,6 @@
 #include <float.h>
 #include <limits.h>
+#include <math.h>
 #include <stdio.h>
 #include <string.h> // memcpy
 // https://en.wikipedia.org/wiki/C_data_types
@@ -85,8 +86,8 @@ int main() {
    * DBL_EPSILON:  2.22045e-16 = 2^-52
    * LDBL_EPSILON: 1.0842e-19  = 2^-63
    */
-  printf("FLT_EPSILON: %g, DBL_EPSILON: %g, LDBL_EPSILON: %Lg \n\n", FLT_EPSILON,
-         DBL_EPSILON, LDBL_EPSILON);
+  printf("FLT_EPSILON: %g, DBL_EPSILON: %g, LDBL_EPSILON: %Lg \n\n",
+         FLT_EPSILON, DBL_EPSILON, LDBL_EPSILON);
 
   /*
    * float 32 bits
@@ -108,18 +109,22 @@ int main() {
   unsigned temp1 = 0x7F7FFFFFU;
   float max_float = 0;
   memcpy(&max_float, &temp1, sizeof(temp1));
-  printf("largest normal float: %g\n", max_float);
+  printf("largest normal float: %g %g\n", max_float,
+         powf(FLT_RADIX, FLT_MAX_EXP - 1) *
+             (2 - powf(FLT_RADIX, 1 - FLT_MANT_DIG)));
   /*
    * 0    0000 0001 0000 0000 0000 0000 0000 000
    * 31   30        22                         0
    * 2^(1 - 127) = 2^-126
+   * b**(emin - 1) = 2 ^ (-125 - 1)
    */
   printf("smallest positive normal float from header: %g\n",
          FLT_MIN); // 1.17549e-38
   temp1 = 0x800000U;
   float min_float = 0;
   memcpy(&min_float, &temp1, sizeof(temp1));
-  printf("smallest positive normal float: %g\n", min_float);
+  printf("smallest positive normal float: %g %g\n", min_float,
+         powf(FLT_RADIX, FLT_MIN_EXP - 1));
   /*
    * 0 00000000 00000000000000000000000: +0
    * 1 00000000 00000000000000000000000: -0
@@ -177,7 +182,13 @@ int main() {
    * long double 80 bits
    * (1 - 2^-64) * 2^16384 = 1.18973e+4932
    */
-  printf("largest normal long double from header: %Lg\n", LDBL_MAX);
+  printf("largest long double from header: %Lg\n", LDBL_MAX);
+  printf("largest long double: %Lg\n",
+         (2 - powl(FLT_RADIX, 1 - LDBL_MANT_DIG)) *
+             powl(FLT_RADIX, LDBL_MAX_EXP - 1));
+  printf("smallest positive long double from header: %Lg\n", LDBL_MIN);
+  printf("smallest positive long double: %Lg\n",
+         powl(FLT_RADIX, LDBL_MIN_EXP - 1));
 
   /*
    * use `gcc/clang -H 2-1.c` to find the header file's path
